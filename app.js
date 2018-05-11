@@ -33,6 +33,8 @@
 
     .controller('foodController', itemsController);
 
+    itemsController.$inject = ['$scope'];
+
     function itemsController($scope){
             $scope.items = ''
         $scope.checkItems = function(){
@@ -45,12 +47,18 @@
                 }
             });
             var length = filtered_items_list.length
-            if(length==0)
+            if(length==0){
                 $scope.msg = 'Please enter data first';
-            else if(length<=3)
+                $scope.fontColorBorder = 'red'
+                }
+            else if(length<=3){
                 $scope.msg = 'Enjoy!';
-            else
+                $scope.fontColorBorder = 'green'
+                }
+            else{
                 $scope.msg = 'Too much!';
+                $scope.fontColorBorder = 'green'
+                }
 
 
         }
